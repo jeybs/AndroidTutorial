@@ -45,6 +45,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
         // Initiate SharedPrefsUtils
         sharedPrefsUtils = new SharedPrefsUtils(activity);
 
+        //region names
         List<String> nameList = new ArrayList<>();
         nameList.add("John Brad");
         nameList.add("Jeniffer Law");
@@ -67,6 +68,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
         nameList.add("Popoy Basha");
         nameList.add("John Hener");
         nameList.add("Test Sample");
+        //endregion
 
         mAdapter = new RecyclerViewAdapter(getApplicationContext(), nameList, this);
         mLayoutmanager = new LinearLayoutManager(this);
@@ -82,5 +84,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
                 this,
                 activity.getString(R.string.text_welcome, name),
                 Toast.LENGTH_SHORT).show();
+        activity.finish();
     }
 }

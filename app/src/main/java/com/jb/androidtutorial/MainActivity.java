@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.jb.androidtutorial.recyclerview.HelloActivity;
 import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
+import com.jb.androidtutorial.utils.NetworkUtils;
 import com.jb.androidtutorial.viewpager.ViewPagerActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,7 +38,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_recycler:
-                startActivity(HelloActivity.getStartIntent(this));
+                boolean isConnected = NetworkUtils.isNetworkConnected(this);
+
+                if(isConnected) {
+                    startActivity(HelloActivity.getStartIntent(this));
+                } else {
+                    Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.button_view_pager:
                 startActivity(ViewPagerActivity.getStartIntent(this));

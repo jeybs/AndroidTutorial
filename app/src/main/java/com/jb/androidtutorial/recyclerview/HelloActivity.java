@@ -66,7 +66,8 @@ public class HelloActivity extends AppCompatActivity {
         String user = sharedPrefsUtils.getClickData();
 
         if(!TextUtils.isEmpty(user)) {
-            textView.setText(activity.getString(R.string.text_welcome, user));
+            String hello = activity.getString(R.string.text_welcome, user);
+            textView.setText(hello);
         }
 
     }

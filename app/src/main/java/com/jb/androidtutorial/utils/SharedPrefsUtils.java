@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+
 public class SharedPrefsUtils {
 
     private static final String SHARED_PREFS_NAME = "data";
@@ -18,10 +19,18 @@ public class SharedPrefsUtils {
         mEditor = mSharedPrefsUtils.edit();
     }
 
+    /**
+     * Write data on sharedprefs
+     * @param data
+     */
     public void saveClickData(String data) {
         mEditor.putString(KEY_CLICK_DATA, data).commit();
     }
 
+    /**
+     * Read data on sharedprefs
+     * @return
+     */
     public String getClickData() {
         return mSharedPrefsUtils.getString(KEY_CLICK_DATA, "");
     }
