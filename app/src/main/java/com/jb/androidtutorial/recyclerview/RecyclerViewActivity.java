@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.jb.androidtutorial.R;
+import com.jb.androidtutorial.utils.SharedPrefsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
     private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutmanager;
     private Activity activity;
+    private SharedPrefsUtils sharedPrefsUtils;
 
     /**
      * Provide intent to start this activity
@@ -39,6 +41,9 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
         activity = this;
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_list);
+
+        // Initiate SharedPrefsUtils
+        sharedPrefsUtils = new SharedPrefsUtils(activity);
 
         List<String> nameList = new ArrayList<>();
         nameList.add("John Brad");
@@ -72,6 +77,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerL
 
     @Override
     public void onItemClick(String name) {
+        sharedPrefsUtils.saveClickData(name);
         Toast.makeText(
                 this,
                 activity.getString(R.string.text_welcome, name),

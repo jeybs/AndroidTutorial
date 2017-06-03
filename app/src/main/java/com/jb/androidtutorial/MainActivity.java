@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.jb.androidtutorial.recyclerview.HelloActivity;
 import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
 import com.jb.androidtutorial.viewpager.ViewPagerActivity;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button btnRecycler;
     private Button btnViewPager;
+    private Button btnAsync;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_recycler:
-                startActivity(RecyclerViewActivity.getStartIntent(this));
+                startActivity(HelloActivity.getStartIntent(this));
                 break;
             case R.id.button_view_pager:
                 startActivity(ViewPagerActivity.getStartIntent(this));
