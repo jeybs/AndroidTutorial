@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.jb.androidtutorial.R;
-import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
+import com.jb.androidtutorial.ui.recyclerview.RecyclerViewActivity;
 
 public class ViewPagerFragment extends Fragment {
 

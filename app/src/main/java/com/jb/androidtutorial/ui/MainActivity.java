@@ -6,18 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-<<<<<<< HEAD:app/src/main/java/com/jb/androidtutorial/ui/MainActivity.java
 import com.jb.androidtutorial.R;
 import com.jb.androidtutorial.ui.licenselist.LicenseListActivity;
 import com.jb.androidtutorial.ui.recyclerview.HelloActivity;
 import com.jb.androidtutorial.ui.signup.Authentication;
 import com.jb.androidtutorial.ui.viewpager.ViewPagerActivity;
-=======
-import com.jb.androidtutorial.recyclerview.HelloActivity;
-import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
+
 import com.jb.androidtutorial.utils.NetworkUtils;
-import com.jb.androidtutorial.viewpager.ViewPagerActivity;
->>>>>>> d3f2280c6fea67973bf25853d018638e40af6c0e:app/src/main/java/com/jb/androidtutorial/MainActivity.java
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

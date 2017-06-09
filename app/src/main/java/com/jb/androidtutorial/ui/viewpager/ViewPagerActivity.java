@@ -10,13 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jb.androidtutorial.R;
-<<<<<<< HEAD:app/src/main/java/com/jb/androidtutorial/ui/viewpager/ViewPagerActivity.java
-=======
+
 import com.jb.androidtutorial.viewpager.fragments.fragment2.Fragment2;
 import com.jb.androidtutorial.viewpager.fragments.Fragment3;
 import com.jb.androidtutorial.viewpager.fragments.Fragment4;
 import com.jb.androidtutorial.viewpager.fragments.ViewPagerFragment;
->>>>>>> d3f2280c6fea67973bf25853d018638e40af6c0e:app/src/main/java/com/jb/androidtutorial/viewpager/ViewPagerActivity.java
+
 
 import java.util.ArrayList;
 import java.util.List;
