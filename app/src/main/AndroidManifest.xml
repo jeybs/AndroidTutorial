@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jb.androidtutorial">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,17 +23,27 @@
         </activity>
 
         <activity
-            android:name=".recyclerview.RecyclerViewActivity"
+            android:name=".ui.recyclerview.RecyclerViewActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".viewpager.ViewPagerActivity"
+            android:name=".ui.viewpager.ViewPagerActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".recyclerview.HelloActivity"
+            android:name=".ui.recyclerview.HelloActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.signup.Authentication"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.licenselist.LicenseListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

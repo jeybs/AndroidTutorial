@@ -1,4 +1,4 @@
-package com.jb.androidtutorial.viewpager;
+package com.jb.androidtutorial.ui.viewpager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
