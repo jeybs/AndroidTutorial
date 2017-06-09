@@ -4,12 +4,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+<<<<<<< HEAD:app/src/main/java/com/jb/androidtutorial/ui/MainActivity.java
 import com.jb.androidtutorial.R;
 import com.jb.androidtutorial.ui.licenselist.LicenseListActivity;
 import com.jb.androidtutorial.ui.recyclerview.HelloActivity;
 import com.jb.androidtutorial.ui.signup.Authentication;
 import com.jb.androidtutorial.ui.viewpager.ViewPagerActivity;
+=======
+import com.jb.androidtutorial.recyclerview.HelloActivity;
+import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
+import com.jb.androidtutorial.utils.NetworkUtils;
+import com.jb.androidtutorial.viewpager.ViewPagerActivity;
+>>>>>>> d3f2280c6fea67973bf25853d018638e40af6c0e:app/src/main/java/com/jb/androidtutorial/MainActivity.java
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_recycler:
-                startActivity(HelloActivity.getStartIntent(this));
+                boolean isConnected = NetworkUtils.isNetworkConnected(this);
+
+                if(isConnected) {
+                    startActivity(HelloActivity.getStartIntent(this));
+                } else {
+                    Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.button_view_pager:
                 startActivity(ViewPagerActivity.getStartIntent(this));

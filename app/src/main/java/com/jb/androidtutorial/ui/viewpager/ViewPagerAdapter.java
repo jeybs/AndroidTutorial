@@ -1,9 +1,10 @@
 package com.jb.androidtutorial.ui.viewpager;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.jb.androidtutorial.viewpager.fragments.ViewPagerFragment;
 
 import java.util.List;
 
@@ -13,29 +14,28 @@ import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    private List<Integer> mImageList;
+    private List<Fragment> mFragmentList;
+    private List<String> mTitles;
 
-    public ViewPagerAdapter(FragmentManager fm, List<Integer> imageList) {
+    public ViewPagerAdapter(List<Fragment> fragmentList, FragmentManager fm, List<String> titles) {
         super(fm);
 
-        mImageList = imageList;
+        mFragmentList = fragmentList;
+        mTitles = titles;
     }
 
     @Override
     public Fragment getItem(int position) {
-        int image = mImageList.get(position);
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("slider", image);
-
-        ViewPagerFragment fragment = new ViewPagerFragment();
-        fragment.setArguments(bundle);
-
-        return fragment;
+        return mFragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return mImageList.size();
+        return mFragmentList.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTitles.get(position).toUpperCase();
     }
 }
