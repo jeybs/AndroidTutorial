@@ -1,12 +1,10 @@
-package com.jb.androidtutorial.recyclerview;
+package com.jb.androidtutorial.ui.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +12,6 @@ import android.widget.TextView;
 
 import com.jb.androidtutorial.R;
 import com.jb.androidtutorial.utils.SharedPrefsUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by jb on 03/06/2017.

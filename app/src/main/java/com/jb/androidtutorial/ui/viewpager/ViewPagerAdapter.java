@@ -1,4 +1,4 @@
-package com.jb.androidtutorial.viewpager;
+package com.jb.androidtutorial.ui.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

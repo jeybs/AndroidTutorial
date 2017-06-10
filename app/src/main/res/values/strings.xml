@@ -4,4 +4,14 @@
 
 
     <string name="text_welcome">Hi %1$s</string>
+
+    <string name="ok">OK</string>
+
+    <string name="text_dialog_warning">Warning!</string>
+    <string name="text_dialog_message_incomplete">Please enter username &amp; password</string>
+    <string name="text_dialog_message_exist">Username already exist</string>
+    <string name="text_dialog_message_insert_success">Registration success</string>
+    <string name="text_dialog_message_insert_failed">Failed to register</string>
+    <string name="text_dialog_login_success">Welcome %1$s</string>
+    <string name="text_dialog_login_failed">Invalid credentials</string>
 </resources>

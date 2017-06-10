@@ -1,4 +1,4 @@
-package com.jb.androidtutorial.recyclerview;
+package com.jb.androidtutorial.ui.recyclerview;
 
 /**
  * Created by 81014102 on 29/05/2017.

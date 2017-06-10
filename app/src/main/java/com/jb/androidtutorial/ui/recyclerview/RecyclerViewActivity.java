@@ -1,4 +1,4 @@
-package com.jb.androidtutorial.recyclerview;
+package com.jb.androidtutorial.ui.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;

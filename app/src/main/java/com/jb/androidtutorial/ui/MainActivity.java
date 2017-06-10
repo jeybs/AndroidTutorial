@@ -1,26 +1,26 @@
-package com.jb.androidtutorial;
+package com.jb.androidtutorial.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.jb.androidtutorial.recyclerview.HelloActivity;
-import com.jb.androidtutorial.recyclerview.RecyclerViewActivity;
+import com.jb.androidtutorial.R;
+import com.jb.androidtutorial.ui.licenselist.LicenseListActivity;
+import com.jb.androidtutorial.ui.recyclerview.HelloActivity;
+import com.jb.androidtutorial.ui.signup.Authentication;
+import com.jb.androidtutorial.ui.viewpager.ViewPagerActivity;
+
 import com.jb.androidtutorial.utils.NetworkUtils;
-import com.jb.androidtutorial.viewpager.ViewPagerActivity;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnRecycler;
     private Button btnViewPager;
-    private Button btnAsync;
+    private Button btnSignUp;
+    private Button btnLicenseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnRecycler = (Button) findViewById(R.id.button_recycler);
         btnViewPager = (Button) findViewById(R.id.button_view_pager);
+        btnSignUp = (Button) findViewById(R.id.button_signup);
+        btnLicenseList = (Button) findViewById(R.id.button_license_list);
 
         btnRecycler.setOnClickListener(this);
         btnViewPager.setOnClickListener(this);
+        btnSignUp.setOnClickListener(this);
+        btnLicenseList.setOnClickListener(this);
     }
 
     @Override
@@ -50,7 +54,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_view_pager:
                 startActivity(ViewPagerActivity.getStartIntent(this));
                 break;
-
+            case R.id.button_signup:
+                startActivity(Authentication.getStartIntent(this));
+                break;
+            case R.id.button_license_list:
+                startActivity(LicenseListActivity.getStartIntent(this));
+                break;
             default: break;
         }
     }
