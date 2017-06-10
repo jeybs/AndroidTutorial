@@ -39,4 +39,21 @@ public class CustomDialog {
         builder.show();
     }
 
+    public void showBasicDialog2(String title, String message, final DIalogClickCallback callback) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext, R.style.AppCompatAlertDialogStyle);
+        builder.setTitle(title);
+        builder.setCancelable(false);
+        builder.setMessage(message);
+
+        builder.setPositiveButton(mContext.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                callback.onDialogOkClick();
+            }
+        });
+
+        builder.show();
+    }
+
 }

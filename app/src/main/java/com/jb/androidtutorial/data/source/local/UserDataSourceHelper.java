@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserDataSourceHelper {
 
     private Context mContext;
@@ -36,7 +39,10 @@ public class UserDataSourceHelper {
             cv.put(dbHelper.COLUMN_USER_NAME, username);
             cv.put(dbHelper.COLUMN_USER_PASSWORD, password);
 
-            if(db.insert(dbHelper.TABLE_USER, null, cv) > 0) isSuccess = true;
+
+            long affectedRow = db.insert(dbHelper.TABLE_USER, null, cv);
+
+            if(affectedRow > 0) isSuccess = true;
 
             db.setTransactionSuccessful();
         } finally {
@@ -56,14 +62,11 @@ public class UserDataSourceHelper {
     public boolean checkUsername(String username) {
         db = dbHelper.getReadableDatabase();
 
-        String[] columns = new String[] {
-                dbHelper.COLUMN_USER_NAME,
-                dbHelper.COLUMN_USER_PASSWORD
-        };
-        String arg[] = new String[] { username };
         String selection = dbHelper.COLUMN_USER_NAME + "=?";
 
-        Cursor cursor = db.query(dbHelper.TABLE_USER, columns, selection, arg, null, null, null);
+        String arg[] = new String[] { username };
+
+        Cursor cursor = db.query(dbHelper.TABLE_USER, null, selection, arg, null, null, null);
 
         if(cursor != null) {
             if(cursor.getCount() > 0) {
@@ -90,10 +93,12 @@ public class UserDataSourceHelper {
                 dbHelper.COLUMN_USER_NAME,
                 dbHelper.COLUMN_USER_PASSWORD
         };
-        String arg[] = new String[] { username };
+
         String selection = dbHelper.COLUMN_USER_NAME + "=?";
+        String arg[] = new String[] { username };
 
         Cursor cursor = db.query(dbHelper.TABLE_USER, columns, selection, arg, null, null, null);
+
 
         if(cursor != null) {
             if(cursor.getCount() > 0) {
@@ -114,4 +119,77 @@ public class UserDataSourceHelper {
         return userData;
     }
 
+    public List<UserData> getUsers() {
+        List<UserData> userDataList = new ArrayList<>();
+
+        db = dbHelper.getReadableDatabase();
+
+        String[] columns = new String[] {
+                dbHelper.COLUMN_USER_NAME,
+                dbHelper.COLUMN_USER_PASSWORD
+        };
+
+        Cursor cursor = db.query(dbHelper.TABLE_USER, columns, null, null, null, null, null);
+
+        if(cursor != null) {
+            if(cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                do {
+
+                    String dbUsername = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_USER_NAME));
+                    String dbPassword = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_USER_PASSWORD));
+
+                    UserData user = new UserData();
+                    user.setUsername(dbUsername);
+                    user.setPassword(dbPassword);
+
+                    userDataList.add(user);
+                } while (cursor.moveToNext());
+
+
+            }
+        }
+
+        db.close();
+        return userDataList;
+    }
+
+
+    public void updateUser(String username, String password) {
+        db = dbHelper.getWritableDatabase();
+
+        String selection = dbHelper.COLUMN_USER_NAME + "=?";
+        String arg[] = new String[] { username };
+
+        db.beginTransaction();
+
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put(dbHelper.COLUMN_USER_PASSWORD, password);
+
+            int row = db.update(dbHelper.TABLE_USER, cv, selection, arg);
+
+            if(row > 0) {
+                // Success
+            } else {
+                // Failed
+            }
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+
+        db.close();
+    }
+
+    public void delete(String username) {
+        String selection = dbHelper.COLUMN_USER_NAME + "=?";
+        String arg[] = new String[] { username };
+
+        db = dbHelper.getWritableDatabase();
+        db.delete(dbHelper.TABLE_USER, selection, arg);
+        db.close();
+    }
 }

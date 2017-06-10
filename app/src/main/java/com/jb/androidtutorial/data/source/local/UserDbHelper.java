@@ -28,6 +28,8 @@ public class UserDbHelper extends SQLiteOpenHelper {
                         + COLUMN_USER_NAME + " text not null, "
                         + COLUMN_USER_PASSWORD + " text not null);"
         );
+
+        //"CREATE TABLE IF NOT EXIST USER_TABLE (USER_ID INTEGER PRIMARY KEY AUTOOINCREMENT, USERNAME TEXT NOT NULL, PASSWORD TEXT NOT NULL)";
     }
 
     @Override

@@ -7,18 +7,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jb.androidtutorial.R;
 import com.jb.androidtutorial.data.source.local.UserData;
 import com.jb.androidtutorial.data.source.local.UserDataSourceHelper;
 import com.jb.androidtutorial.dialogs.CustomDialog;
+import com.jb.androidtutorial.dialogs.DIalogClickCallback;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class Authentication extends AppCompatActivity {
+public class Authentication extends AppCompatActivity implements DIalogClickCallback {
 
     private Activity activity;
     private CustomDialog customDialog;
@@ -36,9 +38,9 @@ public class Authentication extends AppCompatActivity {
         String password = editPassword.getText().toString();
 
         if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-            customDialog.showBasicDialog(
+            customDialog.showBasicDialog2(
                     activity.getString(R.string.text_dialog_warning),
-                    activity.getString(R.string.text_dialog_message_incomplete));
+                    activity.getString(R.string.text_dialog_message_incomplete), this);
             return;
         }
 
@@ -114,5 +116,10 @@ public class Authentication extends AppCompatActivity {
         customDialog = new CustomDialog(activity);
         userDataSource = new UserDataSourceHelper(activity);
 
+    }
+
+    @Override
+    public void onDialogOkClick() {
+        Toast.makeText(activity, "Test Click", Toast.LENGTH_SHORT).show();
     }
 }
