@@ -6,8 +6,10 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.jb.androidtutorial.CommonConstants;
 import com.jb.androidtutorial.data.source.LicenseListService;
+import com.jb.androidtutorial.data.source.remote.licenselist.LicenseResponse;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -26,9 +28,13 @@ public class LicenseDataHelper {
     private Context mContext;
     private LicenseListService licenseListService;
     private ProgressDialog progressDialog;
+    private Gson gson;
+
 
     public LicenseDataHelper(Context context) {
         this.mContext = context;
+
+        gson = new Gson();
 
         initializeDialog(context);
     }
@@ -42,24 +48,18 @@ public class LicenseDataHelper {
         licenseListService = retrofit.create(LicenseListService.class);
 
         String header = getHeader();
-        Call<ResponseBody> call = licenseListService.getLicenseKey(header);
+        Call<LicenseResponse> call = licenseListService.getLicenseKey(header);
 
         progressDialog.show();
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<LicenseResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                progressDialog.dismiss();
-                try {
-                    Log.d(TAG, response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call<LicenseResponse> call, Response<LicenseResponse> response) {
+                Log.d(TAG, gson.toJson(response.body()));
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                progressDialog.dismiss();
-                Log.e(TAG, t.getLocalizedMessage());
+            public void onFailure(Call<LicenseResponse> call, Throwable t) {
+
             }
         });
     }
